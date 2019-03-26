@@ -19,6 +19,12 @@ deps = {
   '{mlpth_root}/tools/clang': {
     'url': '{chromium_git}/tools/clang.git@3114fbc11f9644c54dd0a4cdbfa867bac50ff983',
   },
+  '{mlpth_root}/third_party/cpython': {
+    'url': 'https://github.com/python/cpython.git@3.7',
+  },
+  '{mlpth_root}/third_party/pybind': {
+    'url': 'https://github.com/pybind/pybind11.git@v2.2',
+  },
   # Pull the skia source in only for the headers at the moment.
   # We might compile as part of this project in the future.
   '{mlpth_root}/third_party/skia': {

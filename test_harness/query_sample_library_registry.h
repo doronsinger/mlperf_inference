@@ -45,8 +45,7 @@ class QslRegistry {
   // This ensures libraries_ is null before the first call to Register().
   static std::unique_ptr<QslVector> libraries_;
   static void InitializeIfNeeded() {
-    if (libraries_)
-      return;
+    if (libraries_) return;
     libraries_ = std::unique_ptr<QslVector>(new QslVector);
   }
 };

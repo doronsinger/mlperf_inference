@@ -9,11 +9,17 @@ namespace mlperf {
 struct QuerySampleResponse;
 
 enum TestScenario {
-  All, Cloud, Edge, Offline,
+  All,
+  Cloud,
+  Edge,
+  Offline,
 };
 
 enum TestMode {
-  SubmissionRun, AccuracyOnly, PerformanceOnly, SearchForQps,
+  SubmissionRun,
+  AccuracyOnly,
+  PerformanceOnly,
+  SearchForQps,
 };
 
 struct TestSettings {
@@ -26,7 +32,7 @@ struct TestSettings {
 };
 
 // Defined in parse_command_line.cc
-TestSettings ParseCommandLine(const char* command);  // For Python.
+TestSettings ParseCommandLine(const char* command);        // For Python.
 TestSettings ParseCommandLineArgs(int argc, char** argv);  // For C.
 
 // QueryComplete must be called by the SUT once it completes a query issued

@@ -30,6 +30,7 @@ class SutQueryAllocator : public QueryAllocator {
   ~SutQueryAllocator() override;
   void* Allocate(size_t size) override;
   void Free(void* ptr) override;
+
  private:
   SystemUnderTest* sut_;
 };

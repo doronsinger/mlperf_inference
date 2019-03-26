@@ -1,27 +1,28 @@
 declare_args() {
   mlpi_use_skia_lib = false
   mlpi_use_skia_src = true
+  pyconfig_dir = "/usr/include/x86_64-linux-gnu/python2.7"
 }
 
 component("mlpi_test_harness") {
   sources = [
+    "demo.cc",
+    "parse_command_line.cc",
+    "query_allocator.cc",
     "query_allocator.h",
+    "query_residency_manager.cc",
     "query_residency_manager.h",
     "query_sample.h",
     "query_sample_library.h",
     "query_sample_library_registry.h",
-    "system_under_test_c_api.h",
     "system_under_test.h",
+    "system_under_test_c_api.cc",
+    "system_under_test_c_api.h",
+    "test_harness.cc",
     "test_harness.h",
     "trace_generator.h",
-    "demo.cc",
-    "parse_command_line.cc",
-    "query_allocator.cc",
-    "query_residency_manager.cc",
-    "system_under_test_c_api.cc",
-    "test_harness.cc",
   ]
-  cflags = ["-Wall"]
+  cflags = [ "-Wall" ]
   defines = []
   include_dirs = [ "." ]
 
@@ -37,13 +38,22 @@ component("mlpi_test_harness") {
   # dependency, like chromium, android, and fuchsia do.
   if (mlpi_use_skia_lib) {
     if (is_win) {
-      libs = [
-        "../third_party/skia/lib/libskia.lib",
-      ]
+      libs = [ "../third_party/skia/lib/libskia.lib" ]
     } else {
-      libs = [
-        "../third_party/skia/lib/libskia.a",
-      ]
+      libs = [ "../third_party/skia/lib/libskia.a" ]
     }
   }
+}
+
+component("mlpi_python_bindings") {
+  sources = [
+    "python_bindings.cc",
+  ]
+  deps = [
+    ":mlpi_test_harness"
+  ]
+  configs += [ "//build/config/compiler:rtti",
+               "//build/config/compiler:exceptions" ]
+  cflags = [ "-Wno-macro-redefined" ]
+  include_dirs = [ ".", "../third_party/cpython/Include", pyconfig_dir ]
 }

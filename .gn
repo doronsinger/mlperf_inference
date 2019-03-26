@@ -6,7 +6,8 @@ default_args = {
   is_component_build = false
 
   # Override skia's compiler flags.
-  skia_default_configs_override_import = "//gn/skia_default_configs_override.gni"
+  skia_default_configs_override_import =
+      "//gn/skia_default_configs_override.gni"
 
   # Skia deps to use.
   skia_use_libjpeg_turbo = true

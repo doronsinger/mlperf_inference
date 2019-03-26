@@ -1,8 +1,8 @@
 #include "test_harness.h"
 
+#include <stdint.h>
 #include <iostream>
 #include <mutex>
-#include <stdint.h>
 
 #include "query_allocator.h"
 #include "query_residency_manager.h"

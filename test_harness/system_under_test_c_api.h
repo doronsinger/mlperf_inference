@@ -23,12 +23,12 @@ namespace c {
 
 typedef intptr_t ClientData;  // Equivalent to C++'s this pointer.
 
-typedef void(*UntimedWarmUpCallback)(ClientData);
-typedef void*(*AllocateQuerySampleCallback)(ClientData, size_t);
-typedef void(*FreeQuerySampleCallback)(ClientData, void*);
-typedef void(*PreprocessQuerySampleCallback)(ClientData, const void*,
-                                             const size_t, void**, size_t*);
-typedef void(*IssueQueryCallback)(ClientData, intptr_t, QuerySample*, size_t);
+typedef void (*UntimedWarmUpCallback)(ClientData);
+typedef void* (*AllocateQuerySampleCallback)(ClientData, size_t);
+typedef void (*FreeQuerySampleCallback)(ClientData, void*);
+typedef void (*PreprocessQuerySampleCallback)(ClientData, const void*,
+                                              const size_t, void**, size_t*);
+typedef void (*IssueQueryCallback)(ClientData, intptr_t, QuerySample*, size_t);
 
 // Create and destroy an opaque SUT pointer based on C callbacks.
 void* ConstructSUT(ClientData client_data, const char* name, size_t name_length,

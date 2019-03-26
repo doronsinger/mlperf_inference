@@ -11,4 +11,3 @@ config("mlpi_skia_disable_warnings") {
     cflags += [ "-Wno-implicit-fallthrough" ]
   }
 }
-
